@@ -3,6 +3,8 @@ const output = document.getElementById("output");
 const status = document.getElementById("status");
 const runButton = document.getElementById("runButton");
 const clearButton = document.getElementById("clearButton");
+const floatingButton = document.getElementById("floatingButton");
+const updateButton = document.getElementById("updateButton");
 
 runButton.addEventListener("click", async () => {
   runButton.disabled = true;
@@ -27,4 +29,19 @@ clearButton.addEventListener("click", () => {
   editor.value = "";
   output.textContent = "Ready to run.";
   status.textContent = "Ready";
+});
+
+floatingButton.addEventListener("click", async () => {
+  const visible = await window.executor.toggleFloating();
+  floatingButton.textContent = visible ? "Hide Output" : "Float Output";
+});
+
+updateButton.addEventListener("click", async () => {
+  updateButton.disabled = true;
+  status.textContent = await window.executor.checkForUpdates();
+  updateButton.disabled = false;
+});
+
+window.executor.onUpdateStatus((message) => {
+  status.textContent = message;
 });

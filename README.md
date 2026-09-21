@@ -36,3 +36,7 @@ spawn_entity("TestCube")
 ```
 
 `runtime.ts` is the integration point for replacing the test API with your own engine's allowlisted functions. Keep host access disabled and expose only APIs that are safe for scripts.
+
+## Updates and floating output
+
+Packaged builds check GitHub Releases for updates. Create a release for a newer version of `package.json` to make an update available. The **Float Output** button opens an always-on-top output panel for your own test environment; it does not attach to or inject into third-party games.

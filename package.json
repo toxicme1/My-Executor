@@ -11,10 +11,12 @@
     "dev": "npm run build -- --watch",
     "typecheck": "tsc --noEmit",
     "dist": "npm run build && electron-builder --win --publish never",
-    "dist:dir": "npm run build && electron-builder --dir --publish never"
+    "dist:dir": "npm run build && electron-builder --dir --publish never",
+    "release": "npm run build && electron-builder --win --publish always"
   },
   "dependencies": {
     "fengari": "^0.1.4"
+    ,"electron-updater": "^6.3.9"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
@@ -25,7 +27,14 @@
   "build": {
     "appId": "com.myexecutor.desktop",
     "productName": "My Executor",
-    "publish": null,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "toxicme1",
+        "repo": "My-Executor",
+        "private": false
+      }
+    ],
     "asar": true,
     "files": [
       "dist/**/*",
