@@ -45,7 +45,7 @@ export function runScript(source: string): RunResult {
   lua.lua_pushjsfunction(state, printFunction);
   lua.lua_setglobal(state, to_luastring("print"));
 
-  lua.lua_pushjsfunction(state, (currentState) => {
+  lua.lua_pushjsfunction(state, (currentState: any) => {
     lua.lua_createtable(currentState, 0, 2);
     lua.lua_pushstring(currentState, to_luastring("TestPlayer"));
     lua.lua_setfield(currentState, -2, to_luastring("name"));
@@ -55,7 +55,7 @@ export function runScript(source: string): RunResult {
   });
   lua.lua_setglobal(state, to_luastring("get_local_player"));
 
-  lua.lua_pushjsfunction(state, (currentState) => {
+  lua.lua_pushjsfunction(state, (currentState: any) => {
     const name = to_jsstring(lua.lua_tostring(currentState, 1));
     output.push(`[engine] spawned ${name}`);
     return 0;
