@@ -10,8 +10,8 @@
     "start": "npm run build && electron .",
     "dev": "npm run build -- --watch",
     "typecheck": "tsc --noEmit",
-    "dist": "npm run build && electron-builder --win",
-    "dist:dir": "npm run build && electron-builder --dir"
+    "dist": "npm run build && electron-builder --win --publish never",
+    "dist:dir": "npm run build && electron-builder --dir --publish never"
   },
   "dependencies": {
     "fengari": "^0.1.4"
@@ -25,6 +25,7 @@
   "build": {
     "appId": "com.myexecutor.desktop",
     "productName": "My Executor",
+    "publish": null,
     "asar": true,
     "files": [
       "dist/**/*",
