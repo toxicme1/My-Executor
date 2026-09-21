@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Executor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">PRIVATE TEST ENVIRONMENT</div>
+        <h1>My Executor</h1>
+      </div>
+      <div class="actions">
+        <button id="clearButton" class="secondary">Clear</button>
+        <button id="runButton" class="primary">Run Script</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel editor-panel">
+        <div class="panel-header">
+          <span>Script editor</span>
+          <span id="status" class="status">Ready</span>
+        </div>
+        <textarea id="editor" spellcheck="false">local player = get_local_player()
+
+print("Hello,", player.name)
+spawn_entity("TestCube")</textarea>
+      </section>
+
+      <section class="panel console-panel">
+        <div class="panel-header">
+          <span>Output</span>
+          <span class="badge">SANDBOXED</span>
+        </div>
+        <pre id="output">Ready to run.</pre>
+      </section>
+    </main>
+
+    <footer>
+      <span>Only allowlisted engine APIs are available.</span>
+      <span>Filesystem and network access disabled.</span>
+    </footer>
+    <script src="renderer.js"></script>
+  </body>
+</html>

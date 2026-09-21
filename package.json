@@ -1,0 +1,54 @@
+{
+  "name": "my-executor",
+  "version": "0.1.0",
+  "private": true,
+  "productName": "My Executor",
+  "description": "A sandboxed desktop script executor for a private game/test environment.",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && electron .",
+    "dev": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
+    "dist": "npm run build && electron-builder --win",
+    "dist:dir": "npm run build && electron-builder --dir"
+  },
+  "dependencies": {
+    "fengari": "^0.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "electron-builder": "^25.1.8",
+    "electron": "^33.2.1",
+    "typescript": "^5.7.2"
+  },
+  "build": {
+    "appId": "com.myexecutor.desktop",
+    "productName": "My Executor",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "ui/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
